@@ -4,10 +4,15 @@ const port = 3000;
 
 const app = express();
 
+
+
+
 // setting view engine as ejs 
 app.set('view engine', 'ejs');
 app.set('views', './view')
 
+// inlcluding mongodb configuration 
+const db = require('./config/mongoose');
 
 // Using Express Router 
 app.use('/', require('./routes/index'));

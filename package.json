@@ -1,0 +1,15 @@
+{
+  "name": "habbit-tracker",
+  "version": "1.0.0",
+  "description": "habbit tracker of user",
+  "main": "server.js",
+  "scripts": {
+    "start" : "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Divya Gaurav",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

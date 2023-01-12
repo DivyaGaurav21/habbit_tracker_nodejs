@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
                 return done(err);
             }
             if (!user || user.password != password) {
-                console.log('invalid username/password');
+                console.log('invalid username/password-');
                 return done(null, false);
             }
             return done(null, user);
@@ -47,7 +47,7 @@ passport.checkAuthentication = (req, res, next) => {
         return next();
     }
     // if the user is not sign-in
-    return res.redirect('/users/sign-in');
+    return res.redirect('/users/sign-up');
 }
 
 passport.setAuthenticatedUser = (req, res, next) => {

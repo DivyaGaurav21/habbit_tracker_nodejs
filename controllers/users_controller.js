@@ -34,7 +34,24 @@ module.exports.create = (req, res) => {
             return res.redirect('back');
         }
     })
-    
+
     return res.redirect('/')
 
+}
+
+
+
+//sign in and create a session for user
+module.exports.createSession = (req, res) => {
+    return res.redirect('/');
+}
+
+
+module.exports.signIn = (req, res) => {
+    // if (req.isAuthenticated()) {
+    //     return res.redirect('/users/profile')
+    // }
+    return res.render('user_sign_in', {
+        title: "Sign In | Habbit Tracker"
+    })
 }

@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 // parse application/form-urlencoded, basically can only parse incoming Request Object if strings or arrays
 app.use(bodyParser.urlencoded({ extended: false}));
 
-
+//middleware for static file accessing in assets directory
+app.use(express.static('./assets'));
 
 // setting view engine as ejs 
 app.set('view engine', 'ejs');

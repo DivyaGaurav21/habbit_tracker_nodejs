@@ -3,20 +3,14 @@ const User = require('../models/user');
 
 //render the sign up page
 module.exports.signUp = (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/');
+    }
     return res.render('user_sign_up', {
         title: "Sign Up | Habbit Tracker"
     })
 }
 
-//render the sign up page
-// module.exports.signUp = (req, res) => {
-//     if (req.isAuthenticated()) {
-//         return res.redirect('/users/profile')
-//     }
-//     return res.render('user_sign_Up', {
-//         title: "Social | Sign Up"
-//     })
-// }
 
 //get the sign up data
 module.exports.create = (req, res) => {
@@ -28,15 +22,12 @@ module.exports.create = (req, res) => {
         if (!user) {
             User.create(req.body, (err, user) => {
                 if (err) { console.log('error in creating User in signing up'); return }
-                return res.redirect('/');
+                return res.redirect('/users/sign-in');
             })
         } else {
-            return res.redirect('back');
+            return res.redirect('/users/sign-up');
         }
     })
-
-    return res.redirect('/')
-
 }
 
 
@@ -48,10 +39,20 @@ module.exports.createSession = (req, res) => {
 
 
 module.exports.signIn = (req, res) => {
-    // if (req.isAuthenticated()) {
-    //     return res.redirect('/users/profile')
-    // }
+    if (req.isAuthenticated()) {
+        return res.redirect('/')
+    }
     return res.render('user_sign_in', {
         title: "Sign In | Habbit Tracker"
     })
+}
+
+
+module.exports.destroySession = (req, res , done) => {
+    req.logout((err) => {
+        if (err) {
+            return done(err);
+        }
+    })
+    return res.redirect('/users/sign-in');
 }

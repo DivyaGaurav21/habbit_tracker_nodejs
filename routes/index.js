@@ -5,11 +5,12 @@ const router = express.Router();
 
 // check whether router is loaded  or not
 console.log('router is loaded');
+
 //controller for routing
 const homeController = require('../controllers/home_controller');
 
-// router.get('/', passport.checkAuthentication, homeController.home);
-router.get('/' , homeController.home);
+router.get('/', passport.checkAuthentication, homeController.home);
+// router.get('/' , homeController.home);
 router.use('/users', require('./users'));
 
 

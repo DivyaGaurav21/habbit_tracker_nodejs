@@ -21,5 +21,8 @@ router.post('/create-session',
     , userController.createSession);
 
 
+router.get('/sign-out' , userController.destroySession)
+
+router.use('/habit', require('./habit'));
 
 module.exports = router;

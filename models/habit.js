@@ -5,9 +5,9 @@ const HabitSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true
+    userRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     dates: [{
         date: String,
@@ -24,3 +24,4 @@ const HabitSchema = new mongoose.Schema({
 const Habit = mongoose.model('Habit', HabitSchema);
 
 module.exports = Habit;
+

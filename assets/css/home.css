@@ -6,17 +6,24 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-color:#be915e59;
+    height: 100vh;
+    background-color:#be845e9a;
+    background-image: linear-gradient(rgba(33, 62, 107, 0.836),rgba(51, 9, 6, 0.712)),url('../images/background.jpg');
+     background-position: center;
+    background-size: cover;
+}
+body::-webkit-scrollbar{
+    display: none;
 }
 #nav-section{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(195, 0, 255);
+    background-color: #f44336;
     padding: 5px 20px;
 }
 #nav-section h1 , #nav-section p{
-    color: #fdeeed;
+    color: #ffffff;
 }
 #name-logout{
     font-size: 18px;
@@ -27,24 +34,24 @@ body{
     justify-content: space-between;
 }
 #user_name{
-    color: #6dff19;
+    color: #02005f;
     margin-left: 20px;
     font-size: 20px;
     font-family: cursive;
 }
 #logout a ,#form-btn{
   text-decoration: none;
-  background-color: #f44336;
+  background-color: #16278b;
   color: white;
   padding:5px 10px;
-  border-radius: 8px;
-  border: 1px solid rgb(10, 55, 255);
+  border-radius: 10px;
+  border: 1px solid #fff;
 }
 
 #logout a:hover , #form-btn:hover{
     background-color: #fff;
     color: #f44336;
-    border: 1px solid #f44336;
+    border: 1px solid #ff00f2;
 }
 
 #qutos{
@@ -57,9 +64,12 @@ body{
     font-size: 20px;
     color: #f44336;
     margin:6px 10px;
+    border: 1px solid #f44336;
+    padding:0px 10px;
+    background-color: #02005f7a;
 }
 #qutos p{
-    color: rgb(9, 13, 255);
+    color: #fff;
 }
 #input{
     width: 100vw;
@@ -86,8 +96,7 @@ body{
 
 
 #symbol{
-    /* height:  ; */
-    /* background-color:#6dff192f;; */
+    color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -95,7 +104,6 @@ body{
     padding-bottom: 10px;
 }
 .habit-list{
-    /* background-color: #f443363d; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,7 +111,7 @@ body{
     align-items: center;
 }
 .habit-list-item{
-    background-color:#6dff192f;
+    background-color: #02005f7a;
    width: 650px;
    height: 70px;
    display: flex;
@@ -112,11 +120,37 @@ body{
    align-items: center;
    padding: 0px 20px;
    border-radius: 10px;
+   border: 1px solid #f44336;
 }
 a{
     text-decoration: none;
 }
+.habit-list-item-name{
+    color: #fff;
 
+}
+.remove{
+    color: red;
+    margin-left: 5px;
+}
+.favorite{
+    color: rgb(255, 0, 170);
+}
+.fas{
+    font-size: 30px;
+}
+.fa-star , .fa-trash{
+    font-size: 25px;
+}
+.fa-check-circle{
+    color: green;
+}
+.fa-times-circle{
+    color: red;
+}
+.fa-minus-circle{
+   color: gold; 
+}
 @media screen and (max-width : 900px) {
     #nav-section{
         padding: 5px;
@@ -138,6 +172,12 @@ a{
     .habit-list-item{
     width: 400px;
   }
+  .fas{
+    font-size: 25px;
+}
+.fa-star , .fa-trash{
+    font-size: 20px;
+}
 }
 @media screen and (max-width : 430px) {
     #name-logout{
@@ -154,6 +194,12 @@ a{
     padding:6px 4px;
     margin-left: 4px;
   }
+  .fas{
+    font-size: 20px;
+}
+.fa-star , .fa-trash{
+    font-size: 15px;
+}
 }
 
 

@@ -6,7 +6,9 @@ const app = express();
 
 // inlcluding mongodb configuration 
 const db = require('./config/mongoose');
-
+// using flash library for showing user action notification 
+const flash = require('connect-flash');
+const customMware = require('./config/flashmiddleware')
 
 //used for session cookie 
 const session = require('express-session');
@@ -56,6 +58,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+
+//---------Connect Flash----------//
+app.use(flash());
+app.use(customMware.setFlash);
 
 // Using Express Router 
 app.use('/', require('./routes/index'));

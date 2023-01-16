@@ -21,7 +21,7 @@ module.exports.createHabit = async (req, res) => {
             // find logged in user 
             user = await User.findById(req.user._id).populate();
             // if habit exesists find it 
-            habit = await Habit.findOne({ content: req.body.habit, user: req.user._id }).populate();
+            habit = await Habit.findOne({ content: req.body.habit, userRef: req.user._id }).populate();
         } catch (err) {
             console.log(err)
         }
@@ -52,24 +52,95 @@ module.exports.createHabit = async (req, res) => {
     }
 }
 
-// // delete habit controller
-// module.exports.deleteActivity = async (req, res) => {
-//     try {
-//         // find logged in user
-//         let user = await User.findById(req.cookies.user_id).populate();
-//         if (user.id) { //if user exesist 
-//             // delete the activity
-//             await Habit.findByIdAndDelete(req.params.id);
-//             // pull it from user-> activity array
-//             user.habbits.pull(req.params.id);
-//             user.save();
-//         }
 
-//         // redirect back
-//         return res.redirect('back');
+//---------Dashboard Add/Remove Habit to/from Favorites----------//
+module.exports.favoriteHabit = (req, res) => {
+    let id = req.query.id;
+    let userId = req.user._id
+    Habit.findOne({
+        _id: {
+            $in: [
+                id
+            ]
+        },
+        userRef:userId
+    })
+        .then(habit => {
+            habit.favorite = habit.favorite ? false : true;
+            habit.save()
+                .then(habit => {
+                    return res.redirect('back');
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(err => {
+            console.log("Error adding to favorites!");
+            return;
+        })
+};
 
-//     } catch (err) {
-//         console.log(err)
-//     }
 
-// }
+
+//---------Deleting a habit----------//
+module.exports.destroyHabit = (req, res) => {
+    let id = req.query.id;
+    let userId = req.user._id
+    Habit.deleteMany({
+        _id: {
+            $in: [
+                id
+            ]
+        },
+    userRef:userId
+    }, (err) => {
+        if (err) {
+            console.log("Error in deleting record(s)!");
+        }
+        else {
+            return res.redirect('back');
+        }
+    })
+};
+
+
+
+
+//-------------Update status of habit completion--------------//
+module.exports.statusUpdate = (req, res) => {
+    var d = req.query.date;
+    var id = req.query.id;
+    Habit.findById(id, (err, habit) => {
+        if (err) {
+            console.log("Error updating status!")
+        }
+        else {
+            let dates = habit.dates;
+            let found = false;
+            dates.find((item, index) => {
+                if (item.date === d) {
+                    if (item.complete === 'yes') {
+                        item.complete = 'no';
+                    }
+                    else if (item.complete === 'no') {
+                        item.complete = 'none'
+                    }
+                    else if (item.complete === 'none') {
+                        item.complete = 'yes'
+                    }
+                    found = true;
+                }
+            })
+            if (!found) {
+                dates.push({ date: d, complete: 'yes' })
+            }
+            habit.dates = dates;
+            habit.save()
+                .then(habit => {
+                    console.log(habit);
+                    res.redirect('back');
+                })
+                .catch(err => console.log(err));
+        }
+    })
+
+}

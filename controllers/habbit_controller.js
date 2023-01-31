@@ -32,8 +32,6 @@ module.exports.createHabit = async (req, res) => {
             console.log("already exesist");
         } else {
             // if habit nor exesist | create it
-
-            // create new habit
             let habits = await Habit.create({
                 content: req.body.habit,
                 userRef: req.user._id,
@@ -136,7 +134,7 @@ module.exports.statusUpdate = (req, res) => {
             habit.dates = dates;
             habit.save()
                 .then(habit => {
-                    console.log(habit);
+                    // console.log(habit);
                     res.redirect('back');
                 })
                 .catch(err => console.log(err));

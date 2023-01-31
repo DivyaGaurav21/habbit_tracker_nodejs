@@ -6,15 +6,37 @@
 const User = require('../models/user');
 const Habit = require('../models/habit');
 
-// date to string function => eg : jan 1, 2022 -> "112022"
-function getTodayDate() {
-    let currentDate = new Date();
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear();
-    let today = day + "/" + month + "/" + year;
-    return today
+
+const getTodayDate= () => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    const formattedToday = dd + '/' + mm + '/' + yyyy;
+    return formattedToday;
 }
+
+// get next seven date of week 
+function getOneWeekDate() {
+    let arr = [];
+    for (let i = 0; i < 7; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() + i);
+        let mm = d.getMonth() + 1;
+        if (mm < 10) mm = '0' + mm;
+        let dd = d.getDate();
+        if (dd < 10) dd = '0' + dd;
+        const yyyy = d.getFullYear();
+        arr.push(dd + '/' + mm + '/' + yyyy)
+    }
+    return arr;
+}
+
+
 
 // home controller
 module.exports.home = async (req, res) => {
@@ -27,7 +49,7 @@ module.exports.home = async (req, res) => {
                 title: "Habit Tracker App",
                 habits: habits,
                 // user: user.name,
-                date: await getTodayDate()
+                weeklyDate:await getOneWeekDate()
             });
         } else {    // if user not logged in
         //     // redirect to signin page

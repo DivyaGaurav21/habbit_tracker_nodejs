@@ -103,12 +103,25 @@ body::-webkit-scrollbar{
     align-items: center;
     padding-bottom: 10px;
 }
+/* .habbit-display__width{
+    display: flex;
+    justify-content: center;
+    align-items:initial;
+} */
 .habit-list{
     display: flex;
+     height: 58vh;
+    overflow-x: scroll;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     align-items: center;
+    padding: 10px;
+}
+
+
+.habit-list::-webkit-scrollbar{
+    display: none;
 }
 .habit-list-item{
     background-color: #02005f7a;
@@ -121,6 +134,7 @@ body::-webkit-scrollbar{
    padding: 0px 20px;
    border-radius: 10px;
    border: 1px solid #f44336;
+   position: relative;
 }
 a{
     text-decoration: none;
@@ -151,6 +165,46 @@ a{
 .fa-minus-circle{
    color: gold; 
 }
+
+#weekly__container{
+    width: 650px;
+    /* height: 100px; */
+    /* background-color:#16278b; */
+    border: 1px solid #93fd09;
+    border-radius:10px;
+    /* position: relative;
+    top: 74px;
+    left: 0px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content:center;
+    align-items: center;
+    padding: 10px;
+}
+.weekly__date{
+    width: 80px;
+    height: 80px;
+    background-color: #75ff5993;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+.weekly__date p{
+    font-size: 12px;
+    position: relative;
+    color:#fff;
+    top: -10px;
+}
+.with-weekly{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    /* background-color: #e6e6ff; */
+}
 @media screen and (max-width : 900px) {
     #nav-section{
         padding: 5px;
@@ -164,12 +218,12 @@ a{
    .input-form input{
     width: 350px;
    }
-   .habit-list-item{
+   .habit-list-item , #weekly__container{
     width: 500px;
   }
 }
 @media screen and (max-width : 700px) {
-    .habit-list-item{
+    .habit-list-item , #weekly__container{
     width: 400px;
   }
   .fas{

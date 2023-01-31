@@ -12,7 +12,7 @@ module.exports.signUp = (req, res) => {
 }
 
 
-//get the sign up data
+//get the sign up data or create User
 module.exports.create = (req, res) => {
     if (req.body.password != req.body.confirm_password) {
         return res.redirect('back');

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/habit-tracker');
+mongoose.connect('mongodb+srv://divyagaurav:F5Hhg8nBU51zjXdU@cluster0.gzacydq.mongodb.net/test');
+// mongoose.connect('mongodb://localhost/habit-tracker');
 
 const db = mongoose.connection;
 
@@ -12,3 +13,5 @@ db.once('open', () => {
     console.log('Succesfully !! Connected to the DataBase');
 })
 module.export = db;
+
+

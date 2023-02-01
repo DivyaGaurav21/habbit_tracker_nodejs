@@ -46,6 +46,7 @@ body::-webkit-scrollbar{
   padding:5px 10px;
   border-radius: 10px;
   border: 1px solid #fff;
+  cursor: pointer;
 }
 
 #logout a:hover , #form-btn:hover{
@@ -120,6 +121,7 @@ body::-webkit-scrollbar{
    border:1.5px solid rgb(2, 2, 75);
    font-size: 15px;
    border-radius:0 15px 15px 0;
+   cursor: pointer;
 }
 #weekly-view__btn:hover , #weekly-view__btn-2:hover{
     background-color: #ff1100;

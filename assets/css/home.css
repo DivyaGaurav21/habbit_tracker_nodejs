@@ -71,6 +71,10 @@ body::-webkit-scrollbar{
 #qutos p{
     color: #fff;
 }
+.fa-xmark{
+    color: red;
+    cursor: pointer;
+}
 #input{
     width: 100vw;
     display: flex;
@@ -93,7 +97,11 @@ body::-webkit-scrollbar{
     margin-left: 10px;
     font-weight: 800;
 }
-
+#flash-msg{
+    background-color: #ffd41381;
+    font-size: 15px;
+    padding: 0px 7px;
+}
 
 #symbol{
     color: #fff;
@@ -102,15 +110,27 @@ body::-webkit-scrollbar{
     justify-content: center;
     align-items: center;
     padding-bottom: 10px;
+    font-size: 12px;
 }
-/* .habbit-display__width{
-    display: flex;
-    justify-content: center;
-    align-items:initial;
-} */
+#weekly-view__btn , #weekly-view__btn-2{
+   padding:5px 7px;
+   margin-right: 3px;
+   background-color: #f44336;
+   color: #fff;
+   border:1.5px solid rgb(2, 2, 75);
+   font-size: 15px;
+   border-radius:0 15px 15px 0;
+}
+#weekly-view__btn:hover , #weekly-view__btn-2:hover{
+    background-color: #ff1100;
+}
+#weekly-view__btn-2{
+     border-radius:15px 0 0 15px;
+}
+
 .habit-list{
     display: flex;
-     height: 58vh;
+     height: 55vh;
     overflow-x: scroll;
     flex-direction: column;
     justify-content: flex-start;
@@ -166,15 +186,10 @@ a{
    color: gold; 
 }
 
-#weekly__container{
+.weekly__container{
     width: 650px;
-    /* height: 100px; */
-    /* background-color:#16278b; */
-    border: 1px solid #93fd09;
-    border-radius:10px;
-    /* position: relative;
-    top: 74px;
-    left: 0px; */
+    border: 1px solid #4b3f8d;
+    border-radius:0px 0px 15px 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -186,7 +201,7 @@ a{
 .weekly__date{
     width: 80px;
     height: 80px;
-    background-color: #75ff5993;
+    background-color: #ff415a75;
     display: flex;
     justify-content:center;
     flex-direction: column;
@@ -202,8 +217,7 @@ a{
 .with-weekly{
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    /* background-color: #e6e6ff; */
+    gap: 8px;
 }
 @media screen and (max-width : 900px) {
     #nav-section{
@@ -218,12 +232,12 @@ a{
    .input-form input{
     width: 350px;
    }
-   .habit-list-item , #weekly__container{
+   .habit-list-item , .weekly__container{
     width: 500px;
   }
 }
 @media screen and (max-width : 700px) {
-    .habit-list-item , #weekly__container{
+    .habit-list-item , .weekly__container{
     width: 400px;
   }
   .fas{
@@ -253,6 +267,10 @@ a{
 }
 .fa-star , .fa-trash{
     font-size: 15px;
+}
+#weekly-view__btn , #weekly-view__btn-2{
+   padding:0px 3px;
+   margin-right: 3px;
 }
 }
 

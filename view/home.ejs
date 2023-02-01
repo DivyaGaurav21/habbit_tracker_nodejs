@@ -13,12 +13,8 @@
     <title><%= title %></title>
 </head>
 <body>
-    <%if(flash.success && flash.success.length > 0){%>
-       <h3 style="color: red;">
-        <%= flash.success %>
-       </h3> 
-    <%}%>
-
+    
+   
    <nav id="nav-section">
            <h1>Habit Tracker</h1>
        <div id="name-logout">
@@ -29,7 +25,11 @@
 
    <div id="qutos">
             <h1>“Successful people have successful habits”</h1>
-            <p>Start with a new habit today !</p>
+            <p>Start with a new habit today !
+                <%if(flash.success && flash.success.length > 0){%>     
+                <span id="flash-msg"><%= flash.success %> &nbsp;&nbsp;<i class="fa-solid fa-xmark"  onclick="hideFlash()"></i></span> 
+                   <%}%>
+            </p>
    </div>
 
     <div id="input">
@@ -48,7 +48,10 @@
         -Not Done&emsp;&emsp;
         <i class="fas fa-minus-circle"></i>
         -Unmarked&emsp;&emsp;
+        <button id="weekly-view__btn-2" onclick="showDailyData()">Daily</button>
+        <button id="weekly-view__btn" onclick="showWeeklyData()">weekly</button>
       </div>
+
 
    
 
@@ -97,7 +100,7 @@
        </a>
         </div>
     </div> 
-           <div id="weekly__container">
+           <div class="weekly__container" >
             <%for(let d of weeklyDate){%>
                 <div class="weekly__date">
                  <p><%= d %></p>
@@ -131,6 +134,7 @@
  </div>
 
 
+<script src="/js/script.js"></script>
 
 
 </body>

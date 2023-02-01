@@ -55,6 +55,5 @@ module.exports.destroySession = (req, res , done) => {
             return done(err);
         }
     })
-    req.flash('success', 'You have Logged out !');
     return res.redirect('/users/sign-in');
 }

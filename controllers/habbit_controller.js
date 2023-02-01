@@ -14,6 +14,7 @@ function getTodayDate() {
 
 // create habit controller
 module.exports.createHabit = async (req, res) => {
+    req.flash('success', 'well ! A new Habit');
     try {
         let habit
         let user
@@ -53,6 +54,7 @@ module.exports.createHabit = async (req, res) => {
 
 //---------Dashboard Add/Remove Habit to/from Favorites----------//
 module.exports.favoriteHabit = (req, res) => {
+    req.flash('success', 'yeah favorite habit');
     let id = req.query.id;
     let userId = req.user._id
     Habit.findOne({
@@ -81,6 +83,7 @@ module.exports.favoriteHabit = (req, res) => {
 
 //---------Deleting a habit----------//
 module.exports.destroyHabit = (req, res) => {
+    req.flash('success', 'Deleted habit SuccessFully !');
     let id = req.query.id;
     let userId = req.user._id
     Habit.deleteMany({
@@ -105,6 +108,7 @@ module.exports.destroyHabit = (req, res) => {
 
 //-------------Update status of habit completion--------------//
 module.exports.statusUpdate = (req, res) => {
+    req.flash('success', 'updated habit successfully!');
     var d = req.query.date;
     var id = req.query.id;
     Habit.findById(id, (err, habit) => {

@@ -6,7 +6,7 @@ const app = express();
 
 // inlcluding mongodb configuration 
 const db = require('./config/mongoose');
-// using flash library for showing user action notification 
+// using flash library for showing user action notification
 const flash = require('connect-flash');
 const customMware = require('./config/flashmiddleware')
 
@@ -63,6 +63,7 @@ app.use(passport.setAuthenticatedUser);
 //---------Connect Flash----------//
 app.use(flash());
 app.use(customMware.setFlash);
+
 
 // Using Express Router 
 app.use('/', require('./routes/index'));

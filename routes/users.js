@@ -4,8 +4,8 @@ const passport = require('passport');
 
 const router = express.Router();
 
-// imprting user_controller module 
-const userController = require('../controllers/users_controller')
+//imprting user_controller module 
+const userController = require('../controllers/users_controller');
 
 router.get('/sign-up', userController.signUp);
 router.get('/sign-in', userController.signIn);
@@ -22,7 +22,7 @@ router.post('/create-session',
     , userController.createSession);
 
 
-router.get('/sign-out' , userController.destroySession)
+router.get('/sign-out', userController.destroySession);
 
 router.use('/habit', require('./habit'));
 

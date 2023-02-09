@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://divyagaurav:F5Hhg8nBU51zjXdU@cluster0.gzacydq.mongodb.net/test');
+mongoose.connect('mongodb+srv://divyagaurav:divyagaurav@cluster1.ispjeaf.mongodb.net/?retryWrites=true&w=majority');
 // mongoose.connect('mongodb://localhost/habit-tracker');
 
 const db = mongoose.connection;

@@ -3,7 +3,7 @@ const express = require('express');
 const port = 3000;
 
 const app = express();
-
+const cookieParser = require('cookie-parser');
 // inlcluding mongodb configuration 
 const db = require('./config/mongoose');
 // using flash library for showing user action notification
@@ -18,7 +18,7 @@ const passportLocal = require('./config/passport-local-strategy');
 // store user authentication because when seever restart no need to login again
 const MongoStore = require('connect-mongo');
 
-const cookieParser = require('cookie-parser');
+
 const bodyParser = require('body-parser');
 
 // parse application/form-urlencoded, basically can only parse incoming Request Object if strings or arrays
@@ -46,7 +46,7 @@ app.use(session({
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/habit-tracker',
+        mongoUrl: 'mongodb+srv://divyagaurav:divyagaurav@cluster1.ispjeaf.mongodb.net/?retryWrites=true&w=majority',
         autoRemove : 'disabled'
     },
         (err) => {

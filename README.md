@@ -36,7 +36,7 @@
   ## Folder Structure
 ```bash
 
-employee-review-System
+Habit Tracker
     |
     |               |--->css
     |--->assets---->|--->images
